@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 mx-auto">
+            <div class="card-body p-0 boxStyle  my-5 ">
+                <div class="card-body p-0">
+                    <div class="row p-2">
+                        <div class="col-md-6 pt-4 m-auto">
+                            <p class="mb-1">Invoice Number <b>{{InvoiceModel?.invoiceId}}</b> </p>
+                            <p class="text-muted"> Invoice Date <b>{{InvoiceModel?.invoiceDate|date  }}</b> </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row ">
+                        <div class="col-md-12 table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Unit Cost</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of InvoiceModel?.invoiceDetailes">
+                                        <td>{{item.productName}}</td>
+                                        <td>{{item.description}}</td>
+                                        <td>{{item.quantity}}</td>
+                                        <td>{{item.unitPrice|currency}}</td>
+                                        <td>{{item.total|currency}}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row-reverse bg-dark text-white  ">
+                        <div class="py-1   m-auto text-right">
+                            <div class="mb-2">Invoice Total</div>
+                            <div class="h2 font-weight-light">{{InvoiceModel?.totalInvoice|currency}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
