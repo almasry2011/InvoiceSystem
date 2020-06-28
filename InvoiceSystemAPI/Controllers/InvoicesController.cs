@@ -35,7 +35,10 @@ namespace Task.Controllers
                     }
                     item.Total = item.Quantity * product.UnitPrice;
                     product.AvQuantity -= item.Quantity;
-                    var InStock=product.AvQuantity <= 0 ? product.AvQuantity=0 : product.AvQuantity=0;
+                    if (product.AvQuantity <= 0)
+                    {
+                        product.AvQuantity = 0;
+                    }
                 }
                 invoiceModel.TotalInvoice = invoiceModel.InvoiceDetailes.Sum(s => s.Total);
                _uow.Invoices.Add(invoiceModel);
